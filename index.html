@@ -104,7 +104,7 @@
 				clientId: 'a934e438a6ad42019ccc14e7889111d7',
 				limit: '60',
 				resolution: 'standard_resolution',
-				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><p class="lead">{{model.tags}}</p></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
+				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><p class="lead">{{model.tags}}{{model.user.username}}{{model.user.full_name}}</p></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
 			});
 			feed.run();
 		</script>

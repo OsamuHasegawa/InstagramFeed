@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="ja">
+	<head>
+
+		<meta charset="UTF-8" />
+
+		<meta name="Author" content="OsamuHASEGAWA"/>
+		<meta name="generator" content="coda2" />
+		<meta name="description" content="Instagram Feed" />
+		<meta name="Keywords" content="Instagram, RSS Feed" />
+		<meta name="Robots" content="index,follow" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+		
+		<meta http-equiv="Content-Style-Type" content="text/css" />
+		<meta http-equiv="Content-Script-Type" content="text/javascript" />
+		<meta http-equiv="pragma" content="no-cache" />
+		<meta http-equiv="Cache-Control" content="no-cache" />
+		<meta http-equiv="cleartype" content="on" />
+		<meta http-equiv="imagetoolbar" content="no" />
+		<meta http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1">
+		
+		<!--
+<link rel="shortcut icon" type="image/vnd.microsoft.icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="{{ asset('favicon.ico') }}" />
+		<link rel="icon" type="image/vnd.microsoft.icon" sizes="16x16 24x24 32x32 48x48 64x64 72x72 96x96 128x128 256x256" href="{{ asset('favicon.ico') }}" />
+-->
+		
+		<link rel="start" href="/" />
+		
+		<link rel="stylesheet" type="text/css" media="screen" href="./bootstrap3/css/bootstrap.css" />
+		<!--
+<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/common.css') }}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/bootstrap-override.css') }}" />
+		<link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/jquery.dataTables.css') }}" />
+-->
+		
+		<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
+		<script type="text/javascript" src="./bootstrap3/js/bootstrap.min.js"></script>
+		<script type="text/javascript" src="./js/instafeed.min.js"></script>
+		
+		<!--[if lte IE 9]>
+			<script type="text/javascript" src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+		<![endif]-->
+		<style>
+			article,aside,dialog,figure,footer,header,hgroup,menu,nav,section {
+				display: block;
+			}
+		</style>
+
+		<title>Instagram Feed Top</title>
+		
+	</head>
+	<body>
+	
+		<div class="container">
+			<nav class="navbar navbar-inverse" role="navigation">
+				<div class="container">
+					<div class="navbar-header">
+						<button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+							<span class="sr-only">Toggle navigation</span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+							<span class="icon-bar"></span>
+						</button>
+						<a class="navbar-brand" href="#">映像記録制作ゼミ 活動報告</a>
+					</div>
+					
+					<div class="navbar-collapse collapse">
+						<ul class="nav navbar-nav">
+							<li class="active"><a href="#">ホーム</a></li>
+							<li><a href="#about">密着</a></li>
+							<li><a href="#contact">街と映画館</a></li>
+							<li><a href="#contact">ありがとう</a></li>
+							<li><a href="#contact">生協</a></li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+
+			
+			<header class="page-header">
+				<a href="./index.html" target="_self"><h1>Instagram Feed</h1></a>
+			</header>
+			
+			
+
+			<!-- メインコンテンツ -->
+			<section>
+				<header>
+					<h2>feed</h2>
+				</header>
+				<div id="instafeed"></div>
+			</section>
+
+			<footer>
+				Copyright &copy; 2013 Osamu HASEGAWA. All Rights Reserved.
+			</footer>
+		</div>
+		
+	
+		<script type="text/javascript">
+			var feed = new Instafeed({
+				get: 'tagged',
+				tagName: 'sudpw13',
+				clientId: 'a934e438a6ad42019ccc14e7889111d7',
+				limit: '60',
+				resolution: 'standard_resolution',
+				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><p class="lead">{{model.tags}}</p></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
+			});
+			feed.run();
+		</script>
+	
+	</body>
+</html>

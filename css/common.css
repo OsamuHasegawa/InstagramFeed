@@ -1,1 +1,14 @@
-body { padding-top: 70px; }
+body { 
+	margin-top: 15px;
+}
+
+.carousel-inner {
+	background-color: rgba(0,0,0,0.8)
+}
+
+img.carousel {
+	display: block;
+	margin-left: auto;
+	margin-right: auto;
+	text-align: center;
+}

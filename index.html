@@ -27,6 +27,7 @@
 		<link rel="start" href="/" />
 		
 		<link rel="stylesheet" type="text/css" media="screen" href="./bootstrap3/css/bootstrap.css" />
+		<link rel="stylesheet" type="text/css" media="screen" href="./css/common.css" />
 		
 		<!--
 <link rel="stylesheet" type="text/css" media="screen" href="{{ asset('bundles/ealpsportal/css/common.css') }}" />
@@ -37,6 +38,7 @@
 		<script type="text/javascript" src="./js/jquery-2.0.3.min.js"></script>
 		<script type="text/javascript" src="./bootstrap3/js/bootstrap.min.js"></script>
 		<script type="text/javascript" src="./js/instafeed.min.js"></script>
+		<script type="text/javascript" src="./js/utilities.js"></script>
 		
 		<!--[if lte IE 9]>
 			<script type="text/javascript" src="https://html5shiv.googlecode.com/svn/trunk/html5.js"></script>
@@ -62,7 +64,7 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="./index.html">映像記録制作ゼミ 活動報告</a>
+						<a class="navbar-brand" href="./index.html">映像記録制作ゼミ</a>
 					</div>
 					
 					<div class="navbar-collapse collapse">
@@ -75,7 +77,7 @@
 						</ul>
 						<form class="navbar-form navbar-right" method="get" action="./search.html" role="search">
 							<div class="form-group">
-								<input type="text" class="form-control" name="tag" placeholder="ハッシュタグ">
+								<input type="text" class="form-control" name="tagName" placeholder="ハッシュタグ">
 							</div>
 							<button type="submit" class="btn btn-default">検索</button>
 							&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -84,17 +86,44 @@
 				</div>
 			</nav>
 
+			<div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
+				<!-- Indicators -->
+				<!--
+<ol class="carousel-indicators">
+					<li data-target="#carousel-example-generic" data-slide-to="0" class="active"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="1"></li>
+					<li data-target="#carousel-example-generic" data-slide-to="2"></li>
+				</ol>
+-->
+				
+				<!-- Wrapper for slides -->
+				<div id="carouselfeed" class="carousel-inner">
+					<!--
+<div></div>
+					<div class="item active">
+						<img class="img-responsive" src="http://distilleryimage1.s3.amazonaws.com/96f42a70617011e3a531121870f29001_8.jpg" />
+						<div class="carousel-caption">#sudpw13</div>
+					</div>
+-->
+				</div>
+				
+				<!-- Controls -->
+				<a class="left carousel-control" href="#carousel-example-generic" data-slide="prev">
+					<span class="glyphicon glyphicon-chevron-left"></span>
+				</a>
+				<a class="right carousel-control" href="#carousel-example-generic" data-slide="next">
+					<span class="glyphicon glyphicon-chevron-right"></span>
+				</a>
+			</div>
 			
 			<header class="page-header">
-				<a href="./index.html" target="_self"><h1>Instagram Feed</h1></a>
+				<h1>Instagram Feed</h1>
 			</header>
 			
-			
-
 			<!-- メインコンテンツ -->
 			<section>
 				<header>
-					<h2>ゼミ全体Feed</h2>
+					<h2>ゼミ全体</h2>
 				</header>
 				<div id="instafeed"></div>
 			</section>
@@ -106,15 +135,29 @@
 		
 	
 		<script type="text/javascript">
-			var feed = new Instafeed({
-				get: 'tagged',
-				tagName: 'sudpw13',
-				clientId: 'a934e438a6ad42019ccc14e7889111d7',
-				limit: '60',
-				resolution: 'standard_resolution',
-				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><dl class="dl-horizontal"><dt>投稿者ID</dt><dd>{{model.user.username}}</dd><dt>投稿者名</dt><dd>{{model.user.full_name}}</dd><dt>投稿者時間</dt><dd>{{model.created_time}}</dd><dt>ハッシュタグ</dt><dd>{{model.tags}}</dd></dl></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
+			$(document).ready(function(){
+				
+				var carousel = new Instafeed({
+					target: 'carouselfeed',
+					get: 'tagged',
+					tagName: 'sudpw13',
+					clientId: 'a934e438a6ad42019ccc14e7889111d7',
+					limit: '10',
+					resolution: 'low_resolution',
+					template: '<div class="item"><img class="img-responsive carousel" src="{{image}}" /><div class="carousel-caption"><span class="lead">{{caption}}<span></div></div>',
+					after:	function() {
+								$('.item:first').addClass('active');
+								$('.carousel').carousel({
+									interval: 3000
+								});
+								
+							}
+				});
+				carousel.run();
+				
+				viewInstaFeed('instafeed', 'sudpw13');
+				
 			});
-			feed.run();
 		</script>
 	
 	</body>

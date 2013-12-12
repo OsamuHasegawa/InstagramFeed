@@ -61,16 +61,16 @@
 							<span class="icon-bar"></span>
 							<span class="icon-bar"></span>
 						</button>
-						<a class="navbar-brand" href="#">映像記録制作ゼミ 活動報告</a>
+						<a class="navbar-brand" href="./index.html">映像記録制作ゼミ 活動報告</a>
 					</div>
 					
 					<div class="navbar-collapse collapse">
 						<ul class="nav navbar-nav">
-							<li class="active"><a href="#">ホーム</a></li>
-							<li><a href="#about">密着</a></li>
-							<li><a href="#contact">街と映画館</a></li>
-							<li><a href="#contact">ありがとう</a></li>
-							<li><a href="#contact">生協</a></li>
+							<li class="active"><a href="./index.html">ホーム</a></li>
+							<li><a href="./a.html">密着</a></li>
+							<li><a href="./b.html">街と映画館</a></li>
+							<li><a href="./c.html">ありがとう</a></li>
+							<li><a href="./d.html">生協</a></li>
 						</ul>
 					</div>
 				</div>
@@ -104,7 +104,7 @@
 				clientId: 'a934e438a6ad42019ccc14e7889111d7',
 				limit: '60',
 				resolution: 'standard_resolution',
-				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><p class="lead">{{model.tags}}{{model.user.username}}{{model.user.full_name}}</p></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
+				template: '<article class="row"><div class="col-md-7"><header><h3>{{caption}}</h3></header><dl class="dl-horizontal"><dt>投稿者ID</dt><dd>{{model.user.username}}</dd><dt>投稿者名</dt><dd>{{model.user.full_name}}</dd><dt>投稿者時間</dt><dd>{{model.created_time}}</dd><dt>ハッシュタグ</dt><dd>{{model.tags}}</dd></dl></div><div class="col-md-5"><a href="{{link}}"><img class="img-responsive" src="{{image}}" /></a></div></article><hr>'
 			});
 			feed.run();
 		</script>
